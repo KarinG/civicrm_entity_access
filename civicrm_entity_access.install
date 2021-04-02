@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ *  Installation/Un-installation hooks for CiviCRM Entity Access.
+ */
+
+/**
+ * Implements hook_enable().
+ *
+ * Set weight higher than CiviCRM Entity.
+*/
+function civicrm_entity_access_enable() {
+  db_query("UPDATE {system} SET weight = 112 WHERE name = 'civicrm_entity_access'");
+}
