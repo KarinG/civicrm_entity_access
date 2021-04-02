@@ -1,0 +1,5 @@
+name = CiviCRM Entities Access
+description = "Custom access permissions for CiviCRM Drupal entities."
+dependencies[] = civicrm_entity
+package = CiviCRM Entity
+core = 7.x

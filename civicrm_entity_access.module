@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Civicrm entity access module.
+*/
+
+/**
+ * Implements hook_menu_alter().
+*/
+function civicrm_entity_access_menu_alter(&$menu) {
+  foreach ($menu as $path => $item) {
+
+    // Override access callback for civicrm entity CRUD.
+    if ((strpos($path, 'civicrm-') === 0) && $item['access callback'] == 'civicrm_entity_op_access') {
+      $menu[$path]['access callback'] = 'civicrm_entity_access_op_access';
+    }
+  }
+}
+
+/**
+ * Menu access callback.
+*/
+function civicrm_entity_access_op_access($op, $entity_type) {
+
+  // No access.
+  return FALSE;
+}
