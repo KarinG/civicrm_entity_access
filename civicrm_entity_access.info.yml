@@ -1,0 +1,7 @@
+name: 'CiviCRM Entity Access'
+type: module
+description: 'Control Drupal access to CiviCRM entities.'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - civicrm_entity

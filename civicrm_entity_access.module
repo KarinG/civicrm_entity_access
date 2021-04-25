@@ -2,27 +2,23 @@
 
 /**
  * @file
- * Civicrm entity access module.
-*/
+ * Contains civicrm_entity_access.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
- * Implements hook_menu_alter().
-*/
-function civicrm_entity_access_menu_alter(&$menu) {
-  foreach ($menu as $path => $item) {
+ * Implements hook_help().
+ */
+function civicrm_entity_access_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the civicrm_entity_access module.
+    case 'help.page.civicrm_entity_access':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Control access to CiviCRM entities through standard Drupal entity management.') . '</p>';
+      return $output;
 
-    // Override access callback for civicrm entity CRUD.
-    if ((strpos($path, 'civicrm-') === 0) && $item['access callback'] == 'civicrm_entity_op_access') {
-      $menu[$path]['access callback'] = 'civicrm_entity_access_op_access';
-    }
+    default:
   }
-}
-
-/**
- * Menu access callback.
-*/
-function civicrm_entity_access_op_access($op, $entity_type) {
-
-  // No access.
-  return FALSE;
 }

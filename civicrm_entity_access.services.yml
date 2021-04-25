@@ -1,0 +1,6 @@
+services:
+  civicrm_entity_access.route_subscriber:
+    class: Drupal\civicrm_entity_access\Routing\RouteSubscriber
+    arguments: ['@config.factory']
+    tags:
+      - { name: event_subscriber }
